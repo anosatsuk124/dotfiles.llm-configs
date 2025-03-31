@@ -1,0 +1,55 @@
+name: Create Release and Upload Assets
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Dhall
+        uses: dhall-lang/setup-dhall@v4
+
+      - name: Build project
+        run: make all DHALL_YAML="dhall-to-yaml" DIST_DIR="./dist"
+
+      - name: Create Release Tag
+        id: create_tag
+        run: echo "TAG_NAME=release-$(date +'%Y%m%d-%H%M%S')" >> $GITHUB_ENV
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ env.TAG_NAME }}
+          release_name: Release ${{ env.TAG_NAME }}
+          draft: false
+          prerelease: false
+
+      - name: Upload Markdown Assets
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: "./dist/*.md"
+          asset_content_type: text/plain
+
+      - name: Upload yaml Assets
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: "./dist/*.yml"
+          asset_content_type: text/plain
