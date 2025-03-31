@@ -3,7 +3,7 @@ DHALL_TEXT := "dhall text"
 
 SRC_MD := $(wildcard *.md.dhall)
 SRC_YAML := $(wildcard *.yml.dhall)
-DIST_DIR := ./
+DIST_DIR := ./dist
 
 .PHONY: all
 all: build-markdown build-yaml
