@@ -1,0 +1,10 @@
+#!/bin/bash
+
+make_cmd="make all"
+
+if ! $make_cmd; then
+	echo "make all failed, please fix the errors before committing"
+	exit 1
+fi
+
+find . -type f -name '*.md' -o -name '*.yaml' -o -name '*.yml' | xargs git add
