@@ -7,4 +7,6 @@ if ! $make_cmd; then
 	exit 1
 fi
 
-find . -type f -name '*.md' -o -name '*.yaml' -o -name '*.yml' | xargs git add
+for file in *.md *.yml *.md; do
+	git add "$file"
+done

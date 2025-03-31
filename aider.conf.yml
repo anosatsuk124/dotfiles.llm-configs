@@ -1,0 +1,15 @@
+"auto-commits": false
+"chat-language": Japanese
+"dark-mode": true
+"dirty-commits": false
+"git-commit-verify": true
+gitignore: false
+model: "gemini/gemini-2.5-pro-exp-03-25"
+read:
+- .cursorrules
+- CONVENTIONS.md
+- AIDER_CONVENTIONS.md
+- LLM_CODE_CONVENTIONS.md
+"restore-chat-history": true
+vim: true
+"voice-language": ja
