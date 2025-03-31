@@ -24,7 +24,6 @@ let makeText =
 
             ${rule.content}
 
-
             ''
 
 let makeTextFromRules =

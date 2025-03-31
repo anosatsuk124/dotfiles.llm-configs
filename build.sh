@@ -1,7 +1,8 @@
 #!/bin/bash
 build_cmd="$1"
 source="$2"
+dist_dir="$3"
 
-dist_file=$(echo -e "$source" | perl -pe 's/(.*).dhall/$1/g;')
+dist="$dist_dir/$(echo -e "$(basename "$source")" | perl -pe 's/(.*).dhall/$1/g;')"
 
-$build_cmd <"$source" >"$dist_file"
+$build_cmd <"$source" >"$dist"
