@@ -42,7 +42,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: "./dist/*.md"
+          asset_path: "./dist/LLM_CODE_CONVENTIONS.md"
+          asset_name: LLM_CODE_CONVENTIONS.md
           asset_content_type: text/plain
 
       - name: Upload yaml Assets
@@ -52,4 +53,5 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: "./dist/*.yml"
+          asset_name: .aider.conf.yml
           asset_content_type: text/plain
