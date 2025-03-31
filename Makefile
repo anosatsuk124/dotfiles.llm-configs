@@ -4,13 +4,13 @@ DHALL_TEXT := "dhall text"
 SRC_MD := $(wildcard *.md.dhall)
 SRC_YAML := $(wildcard *.yaml.dhall) $(wildcard *.yml.dhall)
 
+.PHONY: all
+all: build-markdown build-yaml
+
 .PHONY: init
 init: ./hooks/pre-commit
 	@echo "Initializing project..."
 	ln -s $(realpath ./hooks/pre-commit) ./.git/hooks/pre-commit
-
-.PHONY: all
-all: build-markdown build-yaml
 
 build-markdown: $(SRC_MD)
 	@echo "Building markdown..."

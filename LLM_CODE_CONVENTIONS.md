@@ -12,3 +12,22 @@ This document outlines the essential rules and guidelines for contributing to th
       
 
 
+## Documentation Guidelines
+
+Maintaining clear and up-to-date documentation is vital for this project.
+
+- **Primary Document (`./docs/index.md`):**
+  - Always **read and update** this file as changes are made to the project.
+  - If `./docs/index.md` doesn't exist, you are responsible for creating it. Analyze the project structure and document the essential information.
+  - This file must clearly describe the **project's purpose, overall structure, setup instructions, and usage guidelines**.
+- **Supporting Documents:**
+  - You may create additional Markdown documents (`.md`) inside the `./docs/` directory as needed to elaborate on specific components, features, or processes, ensuring clarity and maintainability.
+      
+
+
+## Git Commit Message Guidelines
+
+We follow the Conventional Commits specification (v1.0.0) for Git commit messages. This provides a consistent history and facilitates automated changelog generation.
+
+
+
