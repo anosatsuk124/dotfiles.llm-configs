@@ -1,3 +1,35 @@
+let utils = ./src/LLMCodeConvention/utils.dhall
+
+let Types = ./src/LLMCodeConvention/types.dhall
+
+let CommitPrompt =
+      let CodeConventions = ./src/LLMCodeConvention/default.dhall 0
+
+      let GitRules = CodeConventions.GitRules 1
+
+      in  ''
+          ${utils.makeLLMPrompt
+              ( Types.LLMCodeConventionConfig.Rules
+                  { rules =
+                    [ CodeConventions.DefaultLLMPromptHeader
+                    , CodeConventions.GeneralRules
+                    ]
+                  , rootDepth = 1
+                  }
+              )}
+
+          ${utils.makeLLMPrompt
+              (Types.LLMCodeConventionConfig.Rule GitRules.CommitRuleHeader)}
+
+          ${utils.makeLLMPrompt
+              (Types.LLMCodeConventionConfig.Rules GitRules.CommitStructure)}
+
+          ${utils.makeLLMPrompt
+              ( Types.LLMCodeConventionConfig.Rule
+                  GitRules.CommitMessageExamples
+              )}
+                        ''
+
 let ModelConfig = { model = "gemini/gemini-2.5-pro-exp-03-25" }
 
 let GitConfig =
@@ -5,6 +37,7 @@ let GitConfig =
       , dirty-commits = False
       , git-commit-verify = True
       , gitignore = False
+      , commit-prompt = CommitPrompt
       }
 
 let MiscConfig =

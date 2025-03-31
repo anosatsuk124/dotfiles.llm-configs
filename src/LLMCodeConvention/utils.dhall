@@ -3,7 +3,8 @@ let Types = ./types.dhall
 let makeHeaddingWithDepth =
       \(initialDepth : Natural) ->
       \(rule : Types.LLMCodeConventionRule) ->
-        let headdingDepth = rule.headdingDepth + initialDepth
+        let headdingDepth =
+              Natural/subtract 1 (rule.headdingDepth + initialDepth)
 
         let headding = rule.headding
 
@@ -44,16 +45,8 @@ let makeTextFromRules =
 
 let makeLLMPrompt =
       \(config : Types.LLMCodeConventionConfig) ->
-        let handler = { Rule = makeText 0, Rules = makeTextFromRules }
+        let handler = { Rule = makeText 1, Rules = makeTextFromRules }
 
-        in  List/fold
-              Types.LLMCodeConventionConfigElement
-              config
-              Text
-              ( \(element : Types.LLMCodeConventionConfigElement) ->
-                \(acc : Text) ->
-                  let text = merge handler element in text ++ acc
-              )
-              ""
+        in  merge handler config
 
 in  { makeHeaddingWithDepth, makeText, makeTextFromRules, makeLLMPrompt }

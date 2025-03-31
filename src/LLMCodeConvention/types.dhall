@@ -5,16 +5,8 @@ let LLMCodeConventionRule
 let LLMCodeConventionRules =
       { rules : List LLMCodeConventionRule, rootDepth : Natural }
 
-let LLMCodeConventionConfigElement
+let LLMCodeConventionConfig
     : Type
     = < Rule : LLMCodeConventionRule | Rules : LLMCodeConventionRules >
 
-let LLMCodeConventionConfig
-    : Type
-    = List LLMCodeConventionConfigElement
-
-in  { LLMCodeConventionRule
-    , LLMCodeConventionRules
-    , LLMCodeConventionConfig
-    , LLMCodeConventionConfigElement
-    }
+in  { LLMCodeConventionRule, LLMCodeConventionRules, LLMCodeConventionConfig }

@@ -1,36 +1,31 @@
-let Types = ./types.dhall
-
-let utils = ./utils.dhall
-
-let DefaultLLMPromptHeader =
-      Types.LLMCodeConventionConfigElement.Rule
+\(depthOffset : Natural) ->
+  let DefaultLLMPromptHeader =
         { headding = "Project Contribution Guidelines"
-        , headdingDepth = 1
+        , headdingDepth = 1 + depthOffset
         , content =
             ''
             This document outlines the essential rules and guidelines for contributing to this project. Adhering to these guidelines ensures consistency, maintainability, and effective collaboration.
             ''
         }
 
-let GeneralRules =
-      Types.LLMCodeConventionConfigElement.Rule
+  let GeneralRules =
         { headding = "General Rules"
-        , headdingDepth = 2
+        , headdingDepth = 2 + depthOffset
         , content =
             ''
             - **Mandatory Reading:** Before starting any work, you **must read and understand all guidelines** outlined in this document.
-            - **Documentation Review:** Thoroughly review the main documentation file (`./docs/index.md`) and all other documents within the `./docs/` directory. Understanding the existing project structure and specifications is crucial.
             - **Language:** All code, documentation, comments, and commit messages must be written in **English**.
                   ''
         }
 
-let DocumentationRules =
-      Types.LLMCodeConventionConfigElement.Rule
+  let DocumentationRules =
         { headding = "Documentation Guidelines"
-        , headdingDepth = 2
+        , headdingDepth = 2 + depthOffset
         , content =
             ''
             Maintaining clear and up-to-date documentation is vital for this project.
+
+            - **Documentation Review:** Thoroughly review the main documentation file (`./docs/index.md`) and all other documents within the `./docs/` directory. Understanding the existing project structure and specifications is crucial.
 
             - **Primary Document (`./docs/index.md`):**
               - Always **read and update** this file as changes are made to the project.
@@ -41,18 +36,6 @@ let DocumentationRules =
                   ''
         }
 
-let GitCommitRules =
-      Types.LLMCodeConventionConfigElement.Rules
-        { rules =
-          [ { headding = "Git Commit Message Guidelines"
-            , headdingDepth = 0
-            , content =
-                ''
-                We follow the Conventional Commits specification (v1.0.0) for Git commit messages. This provides a consistent history and facilitates automated changelog generation.
-                ''
-            }
-          ]
-        , rootDepth = 2
-        }
+  let GitRules = ./git-rules.dhall
 
-in  [ DefaultLLMPromptHeader, GeneralRules, DocumentationRules, GitCommitRules ]
+  in  { DefaultLLMPromptHeader, GeneralRules, DocumentationRules, GitRules }
