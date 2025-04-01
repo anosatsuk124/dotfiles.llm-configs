@@ -41,7 +41,7 @@ let ModelConfig =
       in  { model = "main", weak-model = "weak", alias }
 
 let GitConfig =
-      { auto-commits = False
+      { auto-commits = True
       , dirty-commits = False
       , git-commit-verify = True
       , gitignore = False
