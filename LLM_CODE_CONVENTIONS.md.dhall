@@ -22,6 +22,8 @@ let GitRulesPrompt =
           utils.makeLLMPrompt
             (Types.LLMCodeConventionConfig.Rule gitRules.CommitRuleHeader)
       ++  utils.makeLLMPrompt
+            (Types.LLMCodeConventionConfig.Rules gitRules.CommitCreationRules)
+      ++  utils.makeLLMPrompt
             (Types.LLMCodeConventionConfig.Rules gitRules.CommitStructure)
       ++  utils.makeLLMPrompt
             (Types.LLMCodeConventionConfig.Rule gitRules.CommitMessageExamples)

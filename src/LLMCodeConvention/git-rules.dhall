@@ -19,7 +19,57 @@
 
             Reply only with the one-line commit message, without any additional text, explanations,
             or line breaks.
-                        ''
+            ''
+        }
+
+  let CommitCreationRules =
+        { rules =
+          [ { headding = "Commit Creation"
+            , headdingDepth = 1
+            , content =
+                ''
+                - **Minimize the number of changes** :
+                  - Each commit should represent a single logical change.
+                  - Avoid combining unrelated changes into a single commit.
+                ''
+            }
+          , { headding = "GOOD Examples (Single Logical Change)"
+            , headdingDepth = 2
+            , content =
+                ''
+                - **Example 1:**  
+                  **Commit Message:** `Refactor user authentication logic`  
+                  **Explanation:**  
+                  This commit is focused solely on restructuring the authentication code. It doesn’t mix in any UI or documentation updates.
+
+                - **Example 2:**  
+                  **Commit Message:** `Fix bug in password reset validation`  
+                  **Explanation:**  
+                  The commit addresses a specific bug in the password reset process. There are no additional unrelated changes in this commit.
+
+                - **Example 3:**  
+                  **Commit Message:** `Update API documentation for user endpoints`  
+                  **Explanation:**  
+                  This commit exclusively updates documentation without altering any source code functionality.
+                            ''
+            }
+          , { headding = "BAD Examples (Unrelated Changes)"
+            , headdingDepth = 2
+            , content =
+                ''
+                - **Example 1:**  
+                  **Commit Message:** `Refactor authentication and update UI styling`  
+                  **Explanation:**  
+                  Combining code refactoring with UI changes mixes unrelated changes. These should be separated into distinct commits.
+
+                - **Example 2:**  
+                  **Commit Message:** `Fix password reset bug and improve logging`  
+                  **Explanation:**  
+                  Although both changes might be related to password reset functionality, they involve different aspects (bug fix vs. logging improvement) and could be split into separate commits for clarity.
+                            ''
+            }
+          ]
+        , rootDepth = 2 + depthOffset
         }
 
   let CommitStructure =
@@ -74,4 +124,8 @@
             ''
         }
 
-  in  { CommitRuleHeader, CommitStructure, CommitMessageExamples }
+  in  { CommitRuleHeader
+      , CommitCreationRules
+      , CommitStructure
+      , CommitMessageExamples
+      }

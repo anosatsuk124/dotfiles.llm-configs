@@ -30,7 +30,7 @@ let CommitPrompt =
               )}
                         ''
 
-let ModelConfig = { model = "gemini/gemini-2.5-pro-exp-03-25" }
+let ModelConfig = { model = "openrouter/deepseek/deepseek-chat-v3-0324" }
 
 let GitConfig =
       { auto-commits = False
