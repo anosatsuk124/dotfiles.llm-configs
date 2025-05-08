@@ -38,7 +38,7 @@ let ModelConfig =
             , "think:openrouter/google/gemini-2.5-pro-exp-03-25"
             ]
 
-      in  { model = "main", weak-model = "weak", alias }
+      in  { model = "main", alias }
 
 let GitConfig =
       { auto-commits = True
