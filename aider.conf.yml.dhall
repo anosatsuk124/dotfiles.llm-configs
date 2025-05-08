@@ -33,12 +33,12 @@ let CommitPrompt =
 let ModelConfig =
       let alias =
             [ "main:openrouter/qwen/qwen3-235b-a22b"
-            , "weak:openrouter/mistralai/mistral-small-3.1-24b-instruct"
+            , "weak:openrouter/google/gemini-2.5-flash-preview"
             , "cheap:openrouter/mistralai/mistral-small-3.1-24b-instruct"
             , "think:openrouter/google/gemini-2.5-pro-exp-03-25"
             ]
 
-      in  { model = "main", alias }
+      in  { model = "main", weak-model = "weak", alias }
 
 let GitConfig =
       { auto-commits = True
