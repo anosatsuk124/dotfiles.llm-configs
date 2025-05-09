@@ -33,7 +33,7 @@ let CommitPrompt =
 let ModelConfig =
       let alias =
             [ "main:openrouter/qwen/qwen3-235b-a22b"
-            , "weak:openrouter/google/gemini-2.5-flash-preview"
+            , "weak:openrouter/google/gemini-2.0-flash-lite-001"
             , "cheap:openrouter/mistralai/mistral-small-3.1-24b-instruct"
             , "think:openrouter/google/gemini-2.5-pro-exp-03-25"
             ]
