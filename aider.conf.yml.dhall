@@ -2,6 +2,8 @@ let utils = ./src/LLMCodeConvention/utils.dhall
 
 let Types = ./src/LLMCodeConvention/types.dhall
 
+let const = ./src/LLMCodeConvention/const.dhall
+
 let CommitPrompt =
       let CodeConventions = ./src/LLMCodeConvention/default.dhall 0
 
@@ -49,7 +51,7 @@ let GitConfig =
       }
 
 let MiscConfig =
-      { chat-language = "Japanese"
+      { chat-language = const.ResponseLanguage
       , dark-mode = True
       , read =
         [ ".cursorrules"

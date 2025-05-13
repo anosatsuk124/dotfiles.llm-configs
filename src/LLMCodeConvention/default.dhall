@@ -1,10 +1,14 @@
 \(depthOffset : Natural) ->
+  let const = ./const.dhall
+
   let DefaultLLMPromptHeader =
         { headding = "Project Contribution Guidelines"
         , headdingDepth = 1 + depthOffset
         , content =
             ''
             This document outlines the essential rules and guidelines for contributing to this project. Adhering to these guidelines ensures consistency, maintainability, and effective collaboration.
+
+            Always respond in ${const.ResponseLanguage} in all chats. Use ${const.DocumentationLanguage} only for comments within code blocks.
             ''
         }
 
@@ -14,7 +18,7 @@
         , content =
             ''
             - **Mandatory Reading:** Before starting any work, you **must read and understand all guidelines** outlined in this document.
-            - **Language:** All code, documentation, comments, and commit messages must be written in **English**.
+            - **Language:** All code, documentation, comments, and commit messages must be written in **${const.DocumentationLanguage}**.
                   ''
         }
 
