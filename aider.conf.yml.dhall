@@ -49,7 +49,7 @@ let ModelConfig =
           }
 
 let GitConfig =
-      { auto-commits = True
+      { auto-commits = False
       , dirty-commits = False
       , git-commit-verify = True
       , gitignore = False
