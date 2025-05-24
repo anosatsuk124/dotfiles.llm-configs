@@ -34,13 +34,15 @@ let CommitPrompt =
 
 let ModelConfig =
       let alias =
-            [ "main:openrouter/qwen/qwen3-235b-a22b"
+            [ "qwen3:openrouter/qwen/qwen3-235b-a22b"
+            , "o4:openrouter/openai/o4-mini-high"
             , "weak:openrouter/google/gemini-2.0-flash-lite-001"
+            , "gemini-flash:openrouter/google/gemini-2.5-flash-preview-05-20:thinking"
             , "cheap:openrouter/mistralai/mistral-small-3.1-24b-instruct"
             , "think:openrouter/google/gemini-2.5-pro-exp-03-25"
             ]
 
-      in  { model = "main", weak-model = "weak", alias }
+      in  { model = "o4", weak-model = "weak", editor-model = "qwen3", alias }
 
 let GitConfig =
       { auto-commits = True
@@ -63,6 +65,7 @@ let MiscConfig =
       , restore-chat-history = True
       , vim = True
       , voice-language = "ja"
+      , architect = True
       }
 
 let Config = MiscConfig /\ GitConfig /\ ModelConfig
