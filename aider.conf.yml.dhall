@@ -42,7 +42,11 @@ let ModelConfig =
             , "think:openrouter/google/gemini-2.5-pro-exp-03-25"
             ]
 
-      in  { model = "o4", weak-model = "weak", editor-model = "qwen3", alias }
+      in  { model = "o4"
+          , weak-model = "weak"
+          , editor-model = "gemini-flash"
+          , alias
+          }
 
 let GitConfig =
       { auto-commits = True
@@ -65,7 +69,6 @@ let MiscConfig =
       , restore-chat-history = True
       , vim = True
       , voice-language = "ja"
-      , architect = True
       }
 
 let Config = MiscConfig /\ GitConfig /\ ModelConfig
