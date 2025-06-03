@@ -36,20 +36,23 @@ let ModelConfig =
       let alias =
             [ "qwen3:openrouter/qwen/qwen3-235b-a22b"
             , "o4:openrouter/openai/o4-mini-high"
+            , "4.1:openrouter/openai/gpt-4.1-mini"
+            , "gemini-pro:openrouter/google/gemini-2.5-pro-preview"
+            , "codex:openrouter/openai/codex-mini"
             , "weak:openrouter/google/gemini-2.0-flash-lite-001"
             , "gemini-flash:openrouter/google/gemini-2.5-flash-preview-05-20:thinking"
             , "cheap:openrouter/mistralai/mistral-small-3.1-24b-instruct"
             , "think:openrouter/google/gemini-2.5-pro-exp-03-25"
             ]
 
-      in  { model = "o4"
+      in  { model = "gemini-pro"
           , weak-model = "weak"
-          , editor-model = "gemini-flash"
+          , editor-model = "qwen3"
           , alias
           }
 
 let GitConfig =
-      { auto-commits = False
+      { auto-commits = True
       , dirty-commits = False
       , git-commit-verify = True
       , gitignore = False
